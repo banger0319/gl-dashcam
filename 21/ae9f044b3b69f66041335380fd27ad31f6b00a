@@ -1,0 +1,32 @@
+.gitignore
+  d540092fe6eee2fc 46-48
+lib/mock/mock_data.dart
+  h_af399a097915a6 61-62
+.github/workflows/deploy-pages.yml
+  h_af399a097915a6 1-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "21ae9f044b3b69f66041335380fd27ad31f6b00a",
+  "prompts": {
+    "d540092fe6eee2fc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ba421a71-d5e3-43e0-83a4-f6064e3ef744",
+        "model": "composer-2"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 48,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_af399a097915a6": {
+      "author": "陈泽枫"
+    }
+  }
+}
