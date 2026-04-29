@@ -1,0 +1,73 @@
+lib/screens/live/live_page.dart
+  d540092fe6eee2fc 18,50,52-68,71-80,83
+lib/screens/main_shell.dart
+  d540092fe6eee2fc 24-30,35,83
+lib/screens/device/device_page.dart
+  0166ed2b62b99971 343-366
+  d540092fe6eee2fc 109,113-118,154,156-157,159-160,164,166-170,172-180,188-189,192-197,199
+  h_af399a097915a6 191,198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "777132c4aa3ca4bd48a7c562b4a2cc529e5a487a",
+  "prompts": {
+    "0166ed2b62b99971": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dd439-eae3-7c32-895a-9de172865f4a",
+        "model": "gpt-5.4"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 24,
+      "total_deletions": 9,
+      "accepted_lines": 24,
+      "overriden_lines": 0
+    },
+    "4c3dcbe46d277858": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33af8db5-cbdb-4b0f-82db-9e9dd79790df",
+        "model": "glm-5.1"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "ab51e1e362ac9cf2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c2b2118-ca6d-482d-b4e2-b35ef5f487f0",
+        "model": "glm-5.1"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 1,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    },
+    "d540092fe6eee2fc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ba421a71-d5e3-43e0-83a4-f6064e3ef744",
+        "model": "gpt-5.5"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 152,
+      "total_deletions": 131,
+      "accepted_lines": 1006,
+      "overriden_lines": 2
+    }
+  },
+  "humans": {
+    "h_af399a097915a6": {
+      "author": "陈泽枫"
+    }
+  }
+}
