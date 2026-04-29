@@ -17,43 +17,27 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
-  bool _showLivePage = false;
   /// Drives [PageTransitionSwitcher.reverse] so “back” (lower tab / leave Live) feels correct.
   bool _shellTransitionReverse = false;
 
   void _navigateToLive() {
-    setState(() {
-      _shellTransitionReverse = false;
-      _showLivePage = true;
-    });
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => LivePage(
+          onBack: () => Navigator.of(context).pop(),
+        ),
+      ),
+    );
   }
 
   void _selectTab(int index) {
     setState(() {
-      if (_showLivePage) {
-        _shellTransitionReverse = true;
-        _showLivePage = false;
-      } else {
-        _shellTransitionReverse = index < _currentIndex;
-      }
+      _shellTransitionReverse = index < _currentIndex;
       _currentIndex = index;
     });
   }
 
-  void _exitLive() {
-    setState(() {
-      _shellTransitionReverse = true;
-      _showLivePage = false;
-    });
-  }
-
   Widget _buildPage() {
-    if (_showLivePage) {
-      return LivePage(
-        key: const ValueKey('LivePage'),
-        onBack: _exitLive,
-      );
-    }
     switch (_currentIndex) {
       case 0:
         return DevicePage(key: const ValueKey('DevicePage'), onNavigateToLive: _navigateToLive);
@@ -96,7 +80,7 @@ class _MainShellState extends State<MainShell> {
           },
           child: _buildPage(),
         ),
-        bottomNavigationBar: _showLivePage ? null : _buildCustomBottomBar(context),
+        bottomNavigationBar: _buildCustomBottomBar(context),
       ),
       ),
     );

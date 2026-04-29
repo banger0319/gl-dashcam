@@ -15,7 +15,7 @@ class LivePage extends StatelessWidget {
     final device = MockData.connectedDevice;
     
     return Scaffold(
-      backgroundColor: Colors.transparent, // Uses the MainShell GradientBackground
+      backgroundColor: const Color(0xFFF8FAFC), // Provide a solid background since it's now a new route
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -47,28 +47,40 @@ class LivePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SizedBox(
         height: 48,
-        child: Stack(
-          alignment: Alignment.center,
+        child: Row(
           children: [
-            Positioned(
-              left: 0,
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
-                icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-                color: AppColors.textPrimary, // #0f172a
-                onPressed: onBack, 
+            SizedBox(
+              width: 48,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+                  color: AppColors.textPrimary,
+                  onPressed: () {
+                    if (Navigator.of(context).canPop()) {
+                      Navigator.of(context).pop();
+                    } else {
+                      onBack();
+                    }
+                  },
+                ),
               ),
             ),
-            const Text(
-              'Live',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textPrimary,
-                height: 32 / 24,
+            const Expanded(
+              child: Text(
+                'Live',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                  height: 32 / 24,
+                ),
               ),
             ),
+            const SizedBox(width: 48),
           ],
         ),
       ),

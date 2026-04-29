@@ -1,7 +1,6 @@
 import 'add_device_page.dart';
 import '../../mock/mock_data.dart';
 import '../../theme/app_colors.dart';
-import '../../theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 import '../settings/settings_page.dart';
 
@@ -107,11 +106,16 @@ class DevicePage extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          _buildConnectionBadge(Icons.wifi, 'Link', const Color(0xFF2F6BFF), Colors.white),
+                          _buildLinkBadge(device.isConnected),
                           const SizedBox(width: 8),
                           _buildStatusBadge(Icons.signal_cellular_alt, device.hasSignal),
                           const SizedBox(width: 8),
-                          _buildStatusBadge(Icons.bluetooth, device.hasBluetooth),
+                          _buildStatusBadge(
+                            device.hasBluetooth
+                                ? Icons.bluetooth_connected_rounded
+                                : Icons.bluetooth_rounded,
+                            device.hasBluetooth,
+                          ),
                         ],
                       ),
                     ],
@@ -147,19 +151,33 @@ class DevicePage extends StatelessWidget {
     );
   }
 
-  Widget _buildConnectionBadge(IconData icon, String label, Color bgColor, Color textColor) {
+  Widget _buildLinkBadge(bool active) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      height: 24,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
+        color: active ? const Color(0xFF2F6BFF) : const Color(0xFFD6DFEC),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 14, color: textColor),
+          Icon(
+            Icons.wifi_rounded, 
+            size: 16, 
+            color: active ? const Color(0xFFF8FAFC) : const Color(0x59475569),
+          ),
           const SizedBox(width: 4),
-          Text(label, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+          Text(
+            'Link',
+            style: TextStyle(
+              fontSize: 12,
+              color: active ? const Color(0xFFF8FAFC) : const Color(0x59475569),
+              fontWeight: FontWeight.w500,
+              height: 1.2,
+            ),
+          ),
         ],
       ),
     );
@@ -167,12 +185,19 @@ class DevicePage extends StatelessWidget {
 
   Widget _buildStatusBadge(IconData icon, bool active) {
     return Container(
-      padding: const EdgeInsets.all(4),
+      width: 36,
+      height: 24,
       decoration: BoxDecoration(
-        color: const Color(0xFFEBF2FF),
-        borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
+        color: active ? const Color(0xFF2F6BFF) : const Color(0xFFD6DFEC),
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: Icon(icon, size: 16, color: active ? const Color(0xFF2F6BFF) : const Color(0xFF64748B)),
+      child: Center(
+        child: Icon(
+          icon, 
+          size: 16, 
+          color: active ? const Color(0xFFF8FAFC) : const Color(0x59475569),
+        ),
+      ),
     );
   }
 
@@ -315,15 +340,30 @@ class DevicePage extends StatelessWidget {
 
 
   Widget _buildSettingButton(BuildContext context) {
-    return Center(
-      child: TextButton.icon(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const SettingsPage()),
-          );
-        },
-        icon: const Icon(Icons.settings_outlined, size: 20, color: AppColors.textSecondary),
-        label: Text('Setting', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary)),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const SettingsPage()),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        height: 48,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.settings_outlined, size: 20, color: AppColors.textSecondary),
+            SizedBox(width: 4),
+            Text(
+              'Setting',
+              style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
+            ),
+          ],
+        ),
       ),
     );
   }
