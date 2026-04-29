@@ -1,0 +1,23 @@
+.github/workflows/deploy-pages.yml
+  5d53313b1a4b13fe 1-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "30dde4ec220ac037914fc4b8fc381859892f2fc1",
+  "prompts": {
+    "5d53313b1a4b13fe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dd6ad-dfed-7530-90d0-3004cb50c1b9",
+        "model": "gpt-5.5"
+      },
+      "human_author": "陈泽枫",
+      "messages": [],
+      "total_additions": 71,
+      "total_deletions": 71,
+      "accepted_lines": 69,
+      "overriden_lines": 0
+    }
+  }
+}
